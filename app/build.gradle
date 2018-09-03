@@ -28,6 +28,7 @@ android {
     configurations.all {
         resolutionStrategy.force 'android.arch.lifecycle:runtime:1.1.1'
         resolutionStrategy.force 'com.android.support:appcompat-v7:27.0.2'
+        resolutionStrategy.force 'com.android.support:multidex:1.0.0'
     }
 }
 
@@ -37,11 +38,10 @@ dependencies {
     implementation project(':common')
     implementation project(':uikit')
     implementation 'com.android.support:multidex:1.0.0'
-
     //日志打印
     implementation 'com.apkfuns.logutils:library:1.5.1.1'
-
-
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    implementation 'com.netease.nimlib:nrtc:5.5.0'
 }

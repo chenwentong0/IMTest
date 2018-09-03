@@ -9,11 +9,9 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class BaseObjectObserver<T> implements Observer<T> {
+
     @Override
     public void onSubscribe(Disposable d) {
-        if (!d.isDisposed()) {
-            d.dispose();
-        }
     }
 
     @Override

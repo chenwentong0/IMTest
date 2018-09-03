@@ -54,7 +54,6 @@ public class ImageLoaderKit {
             return null;
         }
         final int imageSize = HeadImageView.DEFAULT_AVATAR_NOTIFICATION_ICON_SIZE;
-
         Bitmap cachedBitmap = null;
         try {
             cachedBitmap = Glide.with(context)

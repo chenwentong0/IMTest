@@ -1,7 +1,9 @@
 package com.example.common.net.core;
 
-import android.support.v4.BuildConfig;
+//import android.support.v4.BuildConfig;
 import android.text.TextUtils;
+
+import com.example.common.BuildConfig;
 
 import java.util.ArrayList;
 import java.util.List;

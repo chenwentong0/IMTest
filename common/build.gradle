@@ -30,6 +30,8 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.0.2'
+    //design包
+    compile 'com.android.support:design:27.0.2'
     //retrofit
     compile 'com.squareup.retrofit2:retrofit:2.4.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
@@ -42,8 +44,7 @@ dependencies {
     compile 'com.trello.rxlifecycle2:rxlifecycle:2.2.2'
     compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
     compile 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.2.2'
-    //design包
-    compile 'com.android.support:design:27.0.2'
+
     //    //recyclerview 的adapter封装
     //    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
     //Vlayout

@@ -16,6 +16,7 @@ import java.io.Serializable;
  */
 public class UserManager {
     private static UserManager sInstance;
+    private boolean isAutoLogin;
     private UserManager() {}
 
     public static UserManager getInstance() {
@@ -23,6 +24,7 @@ public class UserManager {
             synchronized (UserManager.class) {
                 if (sInstance == null) {
                     sInstance = new UserManager();
+                    sInstance.setAutoLogin(true);
                 }
             }
         }
@@ -48,5 +50,13 @@ public class UserManager {
 
     public void clear() {
         CacheDiskUtils.getInstance().clear();
+    }
+
+    public boolean isAutoLogin() {
+        return isAutoLogin;
+    }
+
+    public void setAutoLogin(boolean autoLogin) {
+        isAutoLogin = autoLogin;
     }
 }

@@ -22,7 +22,7 @@ public class ContactHelper {
             @Override
             public void onItemClick(Context context, String account) {
                 ToastUtil.showLongToast("进入用户信息页面");
-//                UserProfileActivity.start(context, account);
+                UserProfileActivity.start(context, account);
             }
 
             @Override
@@ -33,7 +33,7 @@ public class ContactHelper {
             @Override
             public void onAvatarClick(Context context, String account) {
                 ToastUtil.showLongToast("进入用户信息页面");
-//                UserProfileActivity.start(context, account);
+                UserProfileActivity.start(context, account);
             }
         });
     }

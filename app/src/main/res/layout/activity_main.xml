@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            >
+
+            <android.support.v7.widget.Toolbar
+                style="@style/toolbar_style"
+                app:title="消息"
+                app:titleTextAppearance="@dimen/sp_16" />
+
+        </RelativeLayout>
+
+
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.common.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -224,5 +225,10 @@ public abstract class CBaseFragment extends RxLifeFragment implements IBaseView 
      */
     public void setForceLoad(boolean forceLoad) {
         this.forceLoad = forceLoad;
+    }
+
+    public void startActivity(Class<? extends CBaseActivity> clazz) {
+        Intent intent = new Intent(getContext(), clazz);
+        startActivity(intent);
     }
 }

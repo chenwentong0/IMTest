@@ -8,10 +8,12 @@ import com.example.common.net.core.NetService;
 import com.example.common.utils.BaseUtil;
 import com.example.common.utils.CacheDiskUtils;
 import com.netease.nim.uikit.api.NimUIKit;
+import com.netease.nim.uikit.api.UIKitOptions;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.auth.LoginInfo;
 import com.netease.nimlib.sdk.util.NIMUtil;
 import com.topsports.imtest.common.Constants;
+import com.topsports.imtest.helper.SessionHelper;
 import com.topsports.imtest.manager.UserManager;
 import com.topsports.imtest.net.INetService;
 import com.topsports.imtest.ui.contact.ContactHelper;
@@ -51,7 +53,7 @@ public class MyApplication extends Application {
             // 1、UI相关初始化操作
             // 2、相关Service调用
             // 初始化
-            NimUIKit.init(this);
+            NimUIKit.init(this, buildUIKitOptions());
 
             // 可选定制项
             // 注册定位信息提供者类（可选）,如果需要发送地理位置消息，必须提供。
@@ -62,15 +64,22 @@ public class MyApplication extends Application {
             // 1.注册自定义消息附件解析器（可选）
             // 2.注册各种扩展消息类型的显示ViewHolder（可选）
             // 3.设置会话中点击事件响应处理（一般需要）
-//            SessionHelper.init();
+            SessionHelper.init();
 
             // 通讯录列表定制：示例代码可详见demo源码中的ContactHelper类。
             // 1.定制通讯录列表中点击事响应处理（一般需要，UIKit 提供默认实现为点击进入聊天界面)
-//            ContactHelper.init();
+            ContactHelper.init();
 
             // 在线状态定制初始化。
 //            NimUIKit.setOnlineStateContentProvider(new DemoOnlineStateContentProvider());
         }
+    }
+
+    private UIKitOptions buildUIKitOptions() {
+        UIKitOptions options = new UIKitOptions();
+        // 设置app图片/音频/日志等缓存目录
+        options.appCacheDir = getCacheDir() + "/app";
+        return options;
     }
 
     public static Context getContext() {
