@@ -12,6 +12,7 @@ import com.netease.nim.uikit.api.model.session.SessionCustomization;
 import com.netease.nim.uikit.api.model.session.SessionEventListener;
 import com.netease.nim.uikit.api.wrapper.NimMessageRevokeObserver;
 import com.netease.nim.uikit.business.session.actions.BaseAction;
+import com.netease.nim.uikit.business.session.module.MsgRevokeFilter;
 import com.netease.nim.uikit.common.ui.popupmenu.NIMPopupMenu;
 import com.netease.nim.uikit.common.ui.popupmenu.PopupMenuItem;
 import com.netease.nimlib.sdk.NIMClient;
@@ -25,6 +26,7 @@ import com.netease.nimlib.sdk.msg.constant.MsgTypeEnum;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
 import com.netease.nimlib.sdk.msg.model.LocalAntiSpamResult;
 import com.netease.nimlib.sdk.robot.model.RobotAttachment;
+import com.topsports.imtest.manager.UserManager;
 import com.topsports.imtest.ui.contact.UserProfileActivity;
 import com.topsports.imtest.ui.session.actions.FileAction;
 import com.topsports.imtest.ui.session.actions.GuessAction;
@@ -75,10 +77,10 @@ public class SessionHelper {
 //        registerMsgForwardFilter();
 
         // 注册消息撤回过滤器
-//        registerMsgRevokeFilter();
+        registerMsgRevokeFilter();
 
         // 注册消息撤回监听器
-//        registerMsgRevokeObserver();
+        registerMsgRevokeObserver();
 
         NimUIKit.setCommonP2PSessionCustomization(getP2pCustomization());
 
@@ -544,22 +546,22 @@ public class SessionHelper {
      * 消息撤回过滤器
      */
     private static void registerMsgRevokeFilter() {
-//        NimUIKit.setMsgRevokeFilter(new MsgRevokeFilter() {
-//            @Override
-//            public boolean shouldIgnore(IMMessage message) {
-//                if (message.getAttachment() != null
-//                        && (message.getAttachment() instanceof AVChatAttachment
+        NimUIKit.setMsgRevokeFilter(new MsgRevokeFilter() {
+            @Override
+            public boolean shouldIgnore(IMMessage message) {
+                if (message.getAttachment() != null
+                        && (message.getAttachment() instanceof AVChatAttachment)) {
 //                        || message.getAttachment() instanceof RTSAttachment
 //                        || message.getAttachment() instanceof RedPacketAttachment)) {
-//                    // 视频通话消息和白板消息，红包消息 不允许撤回
-//                    return true;
-//                } else if (DemoCache.getAccount().equals(message.getSessionId())) {
-//                    // 发给我的电脑 不允许撤回
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
+                    // 视频通话消息和白板消息，红包消息 不允许撤回
+                    return true;
+                } else if (UserManager.getInstance().getLoginInfo().getAccount().equals(message.getSessionId())) {
+                    // 发给我的电脑 不允许撤回
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private static void registerMsgRevokeObserver() {
